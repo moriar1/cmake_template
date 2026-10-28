@@ -9,6 +9,7 @@ void tearDown(void) {}
 static void test_add_two_numbers(void) { TEST_ASSERT_EQUAL_INT(5, add(2, 3)); }
 
 static void test_add_negative_numbers(void) {
+  // To make sure you are able to see failed tests
   TEST_ASSERT_EQUAL_INT(-1, add(-2, -3));
 }
 

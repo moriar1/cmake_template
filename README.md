@@ -75,58 +75,14 @@ ctest --preset clang-debug
 
 ## Macros
 
-(see ./misc/custom.h): https://stackoverflow.com/questions/1644868/define-macro-for-debug-printing-in-c
-- Make functions (fprintf) thread safe using queue, print logs when exit().
-- Add or replace MALLOC with try_malloc and xmalloc
-
-```c
-static inline void *try_malloc(size_t n) {
-    return malloc(n);
-}
-#define TRY_MALLOC(ptr, size) do { ptr = try_malloc(size); if (!ptr) return false; } while(0)
-```
-
-- test WRAPPER for pthread_create
-
-```c
-#define DEFINE_THREAD_WRAPPER(func_name, data_type) \
-    void *func_name##_wrapper(void *arg) { \
-        data_type *data = (data_type *)arg; \
-        func_name(data); \
-        return NULL; \
-    }
-
-DEFINE_THREAD_WRAPPER(mystruct_sum_print_impl, MyStruct)
-```
+Not really usefull macros: see `./misc/custom.h` file
 
 ## Cmake
 
-- use `find_package(LLVM REQUIRED CONFIG)` `LLVM_PACKAGE_VERSION` in clang-foramt target
-
-- FetchContent example
 - targets: doc, uninstall
-- CTest
 - CI/CD
 - clang-tidy: https://github.com/jenisys/explore.clang-tidy
 
 https://gitlab.kitware.com/cmake/community/-/wikis/FAQ
 
-<!-- https://habr.com/ru/companies/pvs-studio/articles/708138/ -->
-
-<!-- https://github.com/cpm-cmake/CPM.cmake -->
-
-<!-- https://github.com/friendlyanon/cmake-init -->
-
-<!-- (CMakePresets) https://github.com/friendlyanon/cmake-init-executable -->
-
-<!-- https://github.com/TheLartians/ModernCppStarter -->
-
-<!-- https://github.com/pananton/cpp-lib-template -->
-
-<!-- https://github.com/cginternals/cmake-init -->
-
-<!-- ## Compilers -->
-
-<!-- https://clang.llvm.org/docs/UsersManual.html -->
-
-<!-- https://best.openssf.org/Compiler-Hardening-Guides/Compiler-Options-Hardening-Guide-for-C-and-C++.html -->
+https://github.com/airbus-seclab/c-compiler-security/blob/master/clang_compilation.md

@@ -14,11 +14,6 @@ set_target_properties(unity_lib PROPERTIES C_CLANG_TIDY "")
 # Include .h
 target_include_directories(unity_lib PUBLIC ${UNITY_ROOT_DIR}/src)
 
-# FIXME: -Wno-pedantic option do not works
-if(CMAKE_C_COMPILER_ID MATCHES "Clang|GNU")
-  target_compile_options(unity_lib PRIVATE -Wno-pedantic)
-endif()
-
 add_library(test_config INTERFACE)
 
 # Add project headers.h to tests
